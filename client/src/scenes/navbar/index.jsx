@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   IconButton,
@@ -31,6 +31,16 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
+  let fullName = "";
+
+  useEffect(() => {
+    if (user === null) {
+      navigate("/");
+    } else {
+      fullName = `${user.firstName} ${user.lastName}`;
+    }
+  }, []);
+
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
   const theme = useTheme();
@@ -40,8 +50,6 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  const fullName = "Thomas Gollick";
-
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
       <FlexBetween gap="1.75rem">
@@ -49,7 +57,7 @@ const Navbar = () => {
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
           color="primary"
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/")}
           sx={{
             "&:hover": {
               color: primaryLight,
@@ -108,7 +116,14 @@ const Navbar = () => {
               <MenuItem value={fullName}>
                 <Typography>{fullName}</Typography>
               </MenuItem>
-              <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  navigate("/");
+                  dispatch(setLogout());
+                }}
+              >
+                Log Out
+              </MenuItem>
             </Select>
           </FormControl>
         </FlexBetween>
@@ -180,7 +195,13 @@ const Navbar = () => {
                 <MenuItem value={fullName}>
                   <Typography>{fullName}</Typography>
                 </MenuItem>
-                <MenuItem onClick={() => dispatch(setLogout())}>
+
+                <MenuItem
+                  onClick={() => {
+                    navigate("/");
+                    dispatch(setLogout());
+                  }}
+                >
                   Log Out
                 </MenuItem>
               </Select>

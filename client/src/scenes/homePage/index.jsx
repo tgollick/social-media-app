@@ -6,7 +6,6 @@ const HomePage = () => {
   return (
     <Box>
       <Navbar />
-      https://www.youtube.com/watch?v=K8YELRmUb5o&t=5186s
     </Box>
   );
 };
