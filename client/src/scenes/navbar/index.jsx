@@ -31,15 +31,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  let fullName = "";
-
-  useEffect(() => {
-    if (user === null) {
-      navigate("/");
-    } else {
-      fullName = `${user.firstName} ${user.lastName}`;
-    }
-  }, []);
+  const fullName = `${user.firstName} ${user.lastName}`;
 
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
