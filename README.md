@@ -1,6 +1,6 @@
 # Twitter Clone - Social Media App
 
-Welcome to the Twitter Clone, a social media application that mimics the basic functionality of Twitter. This app allows users to like posts, connect with friends, create posts, and comment on posts. The data is stored in a MongoDB Atlas database.
+A twitter clone made with Next.JS and Node.JS that mimics the basic functionality of Twitter. This app allows users to like posts, connect with friends, create posts, and comment on posts. The data is stored in a MongoDB Atlas database.
 
 ## Prerequisites
 
